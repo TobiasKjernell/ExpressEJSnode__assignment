@@ -6,7 +6,7 @@ class CharacterClass {
         this.races = races;
         this.weaponSpec = weaponSpec;
         this.description = description;
-        this.idType = 'class';
+        this.idType = 'classes';
     }
 }
 
@@ -24,7 +24,7 @@ class Race {
         this.startResist3 = startResist3;
         this.startResist4 = startResist4;
         this.description = description;
-        this.idType = 'race'
+        this.idType = 'races'
     }
 }
 

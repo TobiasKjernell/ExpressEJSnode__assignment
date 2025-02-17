@@ -5,7 +5,7 @@
             <div class="preview__information">
                 <img src="../images/<%= classData[indexID].name %>.png" alt="photo of class" class="preview__img">
                 <span><%= classData[indexID].description %></span> 
-                <a href="../classes/<%= (classData[indexID].classType +"/"+ classData[indexID].name).replaceAll(" ", "").toLowerCase() %>" class="preview__link">Go to <%= classData[indexID].name %>'s Page</a>    
+                <a href="../<%= classData[indexID].idType %>/<%= (classData[indexID].classType +"/"+ classData[indexID].name).replaceAll(" ", "").toLowerCase() %>" class="preview__link">Go to <%= classData[indexID].name %>'s Page</a>    
             </div>
         <% } else if(locals.overviewData) { %> 
                 <% if(overviewData[0]?.acceptedClasses) { %>
@@ -25,26 +25,26 @@
 
         <% if(locals.specificObject) { %>
         
-            <% if(classData.idType === 'class') {  %>
+            <% if(classData.idType === 'classes') {  %>
 
                 <div><%= locals.classData?.description ?? "No Description" %> </div>
                 <div>Class Name:<%= locals.classData?.name ?? "No info" %> </div>
                 <div>Armor:<%= locals.classData?.armorTypes ?? "No Info" %> </div>
                 
-                <% classData.races?.forEach(element => { %>
-                    <a href="<%= root %>races/<%= element.name.toLowerCase() %>"> <%= element.name %></a>
+                <% classData.races?.forEach(race => { %>
+                    <a href="<%= root %>races/<%= race.name.toLowerCase() %>"> <%= race.name %></a>
                <% }); %>
       
                 <!-- <div><%= locals.classData?.races ?? "No Info" %> </div> -->
                 <div>Weapons Knownledge:<%= locals.classData?.weaponSpec ?? "No Info" %> </div>
                 <div>Type of fighter:<%= locals.classData?.classType ?? "No Info" %> </div>
 
-            <% } else if(locals.classData.idType === 'race') { console.log('inne')%>
+            <% } else if(locals.classData.idType === 'races') { %>
                 <div><%= locals.classData?.name ?? "No Description" %> </div>
                 <div><%= locals.classData?.dex ?? "No info" %> </div>
                 
-                <% classData.acceptedClasses?.forEach(element => { %>
-                    <a href="<%= root %>classes/<%= element.classType.toLowerCase() %>/<%= element.name.toLowerCase() %>"> <%= element.name %></a>
+                <% classData.acceptedClasses?.forEach(classes => { %>
+                    <a href="<%= root %>classes/<%= classes.classType.toLowerCase() %>/<%= classes.name.toLowerCase() %>"> <%= classes.name %></a>
                <% }); %>
       
                 <!-- <div><%= locals.classData?.races ?? "No Info" %> </div> -->

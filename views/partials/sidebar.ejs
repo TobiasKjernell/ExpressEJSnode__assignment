@@ -4,12 +4,12 @@
 
             <!--Home Preview-->
             <% locals.classData?.forEach(classInfo => { %>
-            <a href="../<%= locals.preview ? "preview/" : (classInfo.classType.toLowerCase() + '/') %><%= classInfo.name.replaceAll(" ", "").toLowerCase() %>" class="sidebar__link <% if(locals.url) { %> 
+                <a href="../<%= locals.preview ? "preview/" : (classInfo.classType.toLowerCase() + '/') %><%= classInfo.name.replaceAll(" ", "").toLowerCase() %>" class="sidebar__link <% if(locals.url) { %> 
                 <%= url.url ===  '/'+classInfo.name.toLowerCase().replaceAll(" ", "") ? 'active' : "" %>
                 <%  } %> "><%= classInfo.name %></a>
             <% }); %>
 
-            <!--Classes && Races Overview-->
+            <!--Classes && Races Overview/Preview-->
             <% locals.overviewData?.forEach(overviewInfo => { %>
                 <a href=".<%= url.baseUrl + "/" %><%= overviewInfo.name?.toLowerCase() ?? overviewInfo.replaceAll(" ", "").toLowerCase() %>" class="sidebar__link <% if(locals.url) { %> 
                     <%  } %> "><%= overviewInfo.name ?? overviewInfo %></a>
@@ -21,14 +21,14 @@
                 
         <% } else { %>
             
-            <!--Specific Class-->
+            <!--Specific Sub Classes-->
             <% if(!locals.specificObject) {%>
                 <% locals.classData?.forEach((classInfo, index) => { %>
-                    <a href="../classes/<%=(classInfo.classType.toLowerCase() + '/') %><%= classInfo.name.replaceAll(" ", "").toLowerCase() %>" class="sidebar__link <% if(locals.url) { %> 
+                    <a href="../<%= classInfo.idType %>/<%=(classInfo.classType.toLowerCase() + '/') %><%= classInfo.name.replaceAll(" ", "").toLowerCase() %>" class="sidebar__link <% if(locals.url) { %> 
                         <%= url.url ===  '/'+classInfo.name.toLowerCase().replaceAll(" ", "") ? 'active' : "" %>
                         <%  } %> "><%= classInfo.name %></a>
                     <% }); %>
-               <% } %>
+            <% } %>
                 
                 <a href="<%= locals.url.baseUrl %>" class="sidebar__link">[Back]</a>
         <% } %>
