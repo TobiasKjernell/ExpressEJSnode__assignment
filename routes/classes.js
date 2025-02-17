@@ -1,0 +1,50 @@
+import express from 'express';
+import { allClasses } from '../data/characterClasses.js';
+import * as helpers from '../helpers/helpers.js'
+
+const classesRouter = express.Router();
+const overallClassTypes = new Set(allClasses.map(classes => classes.classType));
+
+//Overview of combat types for classes
+classesRouter.get('/', (req, res) => {
+    res.render('pages/home', {
+        root: helpers.rootSearch(req.url),
+        headTitle: "Classes Overview",
+        headerTitle: "Classes Overview",
+        preview: true,
+        overviewData: Array.from(overallClassTypes),
+        url: req
+    })
+})
+
+//Classes on combat type
+overallClassTypes.forEach((typeOfCombatClass, index) => {
+    classesRouter.get(`/${typeOfCombatClass.toLowerCase()}`, (req, res) => {
+        res.render('pages/home', {
+            root: helpers.rootSearch(req.url),
+            headTitle: typeOfCombatClass,
+            headerTitle: `${typeOfCombatClass}`,
+            preview: false,
+            classData: allClasses.filter(classID => classID.classType === typeOfCombatClass),
+            indexID: index,
+            url: req
+        })
+    })
+});
+
+//Specific class on combat type
+allClasses.forEach((specificClass, index) => {
+    classesRouter.get(`/${specificClass.classType.toLowerCase()}/${allClasses[index].name}`, (req, res) => {
+        res.render('pages/home', {
+            root: helpers.rootSearch(req.url),
+            headTitle: specificClass.name,
+            title: specificClass.name,
+            preview: false,
+            classData: specificClass,
+            specificClass: true,
+            url: req
+        })
+    })
+})
+
+export default classesRouter;

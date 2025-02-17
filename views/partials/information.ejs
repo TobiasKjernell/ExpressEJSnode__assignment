@@ -1,0 +1,44 @@
+<div class="information-container">
+    <% if(locals.preview) { %>
+
+        <% if(!isNaN(locals.indexID)) { %>
+            <div class="preview__information">
+                <img src="../images/<%= classData[indexID].name %>.png" alt="photo of class" class="preview__img">
+                <span><%= classData[indexID].description %></span> 
+                <a href="../classes/<%= (classData[indexID].classType +"/"+ classData[indexID].name).replaceAll(" ", "").toLowerCase() %>" class="preview__link">Go to <%= classData[indexID].name %>'s Page</a>    
+            </div>
+        <% } else if(locals.overviewData) { %> 
+                <% if(overviewData[0]?.acceptedClasses) { %>
+                    
+                    <div> This realm have <%= overviewData.length %> races.   <% let mapped = overviewData.map(el => el.name); %> They are: <%= mapped %></div>
+
+                <% } else {%>                     
+                    <div>This realm consists of <%= overviewData.length %> types: <%= overviewData.join(" & ") %>  </div>
+                <% } %>
+            <% } else { %>
+
+                     <%= typeof(locals.indexID) ==='number' ? classData[indexID].description : locals.description ? description : "No Descrption Set" %>
+                     
+            <% } %>
+            
+    <% } else { %>
+
+        <% if(locals.specificClass) { %>
+              
+            <div><%= locals.classData?.description ?? "No Description" %> </div>
+            <div>Class Name:<%= locals.classData?.name ?? "No info" %> </div>
+            <div>Armor:<%= locals.classData?.armorTypes ?? "No Info" %> </div>
+            
+            <% classData.races?.forEach(element => { %>
+                <a href="<%= root %>races/<%= element.name.toLowerCase() %>"> <%= element.name %></a>
+           <% }); %>
+
+            <!-- <div><%= locals.classData?.races ?? "No Info" %> </div> -->
+            <div>Weapons Knownledge:<%= locals.classData?.weaponSpec ?? "No Info" %> </div>
+            <div>Type of fighter:<%= locals.classData?.classType ?? "No Info" %> </div>
+
+            <% } %>
+        <% if(!locals.indexID)  %>
+        <!-- <%= typeof(locals.indexID) ==='number' ? classData[indexID].description : locals.description ? description : "No Descrption Set" %> -->
+    <% } %>
+</div>

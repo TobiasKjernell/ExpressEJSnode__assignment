@@ -1,0 +1,35 @@
+<div class="sidebar">
+        <% if(locals.preview) { %>
+            <div class="sidebar__overview-text">Overview</div>
+
+            <!--Home Preview-->
+            <% locals.classData?.forEach(classInfo => { %>
+            <a href="../<%= locals.preview ? "preview/" : (classInfo.classType.toLowerCase() + '/') %><%= classInfo.name.replaceAll(" ", "").toLowerCase() %>" class="sidebar__link <% if(locals.url) { %> 
+                <%= url.url ===  '/'+classInfo.name.toLowerCase().replaceAll(" ", "") ? 'active' : "" %>
+                <%  } %> "><%= classInfo.name %></a>
+            <% }); %>
+
+            <!--Classes && Races Overview-->
+            <% locals.overviewData?.forEach(overviewInfo => { %>
+                <a href=".<%= url.baseUrl + "/" %><%= overviewInfo.name?.toLowerCase() ?? overviewInfo.replaceAll(" ", "").toLowerCase() %>" class="sidebar__link <% if(locals.url) { %> 
+                    <%  } %> "><%= overviewInfo.name ?? overviewInfo %></a>
+            <% }); %>
+            
+            <% if(locals.url) { %>
+                <a href="../" class="sidebar__link">[Back]</a>
+            <% } %>
+                
+        <% } else { %>
+            
+            <!--Specific Class-->
+            <% if(!locals.specificClass) {%>
+                <% locals.classData?.forEach((classInfo, index) => { %>
+                    <a href="../classes/<%=(classInfo.classType.toLowerCase() + '/') %><%= classInfo.name.replaceAll(" ", "").toLowerCase() %>" class="sidebar__link <% if(locals.url) { %> 
+                        <%= url.url ===  '/'+classInfo.name.toLowerCase().replaceAll(" ", "") ? 'active' : "" %>
+                        <%  } %> "><%= classInfo.name %></a>
+                    <% }); %>
+               <% } %>
+                
+                <a href="<%= locals.url.baseUrl %>" class="sidebar__link">[Back]</a>
+        <% } %>
+</div>
