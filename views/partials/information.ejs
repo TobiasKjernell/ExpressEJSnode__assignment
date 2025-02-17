@@ -1,12 +1,12 @@
 <div class="information-container">
     <% if(locals.preview) { %>
-
+        <div class="preview__information">
         <% if(!isNaN(locals.indexID)) { %>
-            <div class="preview__information">
+            
                 <img src="../images/<%= classData[indexID].name %>.png" alt="photo of class" class="preview__img">
                 <span><%= classData[indexID].description %></span> 
                 <a href="../<%= classData[indexID].idType %>/<%= (classData[indexID].classType +"/"+ classData[indexID].name).replaceAll(" ", "").toLowerCase() %>" class="preview__link">Go to <%= classData[indexID].name %>'s Page</a>    
-            </div>
+           
         <% } else if(locals.overviewData) { %> 
                 <% if(overviewData[0]?.acceptedClasses) { %>
                     
@@ -15,16 +15,17 @@
                 <% } else {%>                     
                     <div>This realm consists of <%= overviewData.length %> types: <%= overviewData.join(" & ") %>  </div>
                 <% } %>
-            <% } else { %>
+                
+        <% } else { %>
 
-                     <%= typeof(locals.indexID) ==='number' ? classData[indexID].description : locals.description ? description : "No Descrption Set" %>
+             <%= typeof(locals.indexID) ==='number' ? classData[indexID].description : locals.description ? description : "No Descrption Set" %>
                      
-            <% } %>
-            
+        <% } %>
+        </div>
     <% } else { %>
 
         <% if(locals.specificObject) { %>
-        
+        <div class="preview__information">
             <% if(classData.idType === 'classes') {  %>
 
                 <div><%= locals.classData?.description ?? "No Description" %> </div>
@@ -32,8 +33,8 @@
                 <div>Armor:<%= locals.classData?.armorTypes ?? "No Info" %> </div>
                 
                 <% classData.races?.forEach(race => { %>
-                    <a href="<%= root %>races/<%= race.name.toLowerCase() %>"> <%= race.name %></a>
-               <% }); %>
+                    <a href="<%= root ? root : './' %><%=race.idType%>/<%= race.name.toLowerCase() %>"> <%= race.name %></a>
+                <% }); %>
       
                 <!-- <div><%= locals.classData?.races ?? "No Info" %> </div> -->
                 <div>Weapons Knownledge:<%= locals.classData?.weaponSpec ?? "No Info" %> </div>
@@ -44,14 +45,14 @@
                 <div><%= locals.classData?.dex ?? "No info" %> </div>
                 
                 <% classData.acceptedClasses?.forEach(classes => { %>
-                    <a href="<%= root %>classes/<%= classes.classType.toLowerCase() %>/<%= classes.name.toLowerCase() %>"> <%= classes.name %></a>
-               <% }); %>
+                    <a href="<%= root %><%= classes.idType %>/<%= classes.classType.toLowerCase() %>/<%= classes.name.toLowerCase() %>"> <%= classes.name %></a>
+                <% }); %>
       
                 <!-- <div><%= locals.classData?.races ?? "No Info" %> </div> -->
                 <div>Weapons Knownledge:<%= locals.classData?.weaponSpec ?? "No Info" %> </div>
                 <div>Type of fighter:<%= locals.classData?.classType ?? "No Info" %> </div>
                 <% } %>
-             <% } %>
-      
+            <% } %>
+            </div>
     <% } %>
 </div>

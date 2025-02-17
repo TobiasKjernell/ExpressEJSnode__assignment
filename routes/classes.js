@@ -38,7 +38,7 @@ allClasses.forEach((specificClass, index) => {
         res.render('pages/home', {
             root: helpers.rootSearch(req.url),
             headTitle: specificClass.name,
-            title: specificClass.name,
+            headerTitle: specificClass.name,
             preview: false,
             classData: specificClass,
             specificObject: true,
