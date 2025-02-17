@@ -4,10 +4,8 @@ import * as helpers from '../helpers/helpers.js'
 
 const racesRouter = express.Router();
 
-
 //Overview of combat types for races
 racesRouter.get('/', (req, res) => {
-    console.log(allRaces);
     res.render('pages/home', {
         root: helpers.rootSearch(req.url),
         headTitle: "Races Overview",
@@ -18,21 +16,18 @@ racesRouter.get('/', (req, res) => {
     })
 })
 
-
-// racesRouter.forEach((typeOfCombatClass, index) => {
-//     classesRouter.get(`/${typeOfCombatClass.toLowerCase()}`, (req, res) => {
-//         res.render('pages/home', {
-//             root: helpers.rootSearch(req.url),
-//             headTitle: typeOfCombatClass,
-//             headerTitle: `${typeOfCombatClass}`,
-//             preview: false,
-//             classData: allClasses.filter(classID => classID.classType === typeOfCombatClass),
-//             indexID: index,
-//             url: req.baseUrl,
-//         })
-//     })
-// });
-
-
+allRaces.forEach((typeOfCombatClass, index) => {
+    racesRouter.get(`/${typeOfCombatClass.name.toLowerCase()}`, (req, res) => {
+        res.render('pages/home', {
+            root: helpers.rootSearch(req.url),
+            headTitle: typeOfCombatClass.name,
+            headerTitle: `${typeOfCombatClass.name}`,
+            preview: false,
+            classData: typeOfCombatClass,
+            specificObject: true,
+            url: req
+        })
+    })
+});
 
 export default racesRouter;

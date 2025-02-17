@@ -41,7 +41,7 @@ allClasses.forEach((specificClass, index) => {
             title: specificClass.name,
             preview: false,
             classData: specificClass,
-            specificClass: true,
+            specificObject: true,
             url: req
         })
     })

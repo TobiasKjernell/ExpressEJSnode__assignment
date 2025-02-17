@@ -23,22 +23,35 @@
             
     <% } else { %>
 
-        <% if(locals.specificClass) { %>
-              
-            <div><%= locals.classData?.description ?? "No Description" %> </div>
-            <div>Class Name:<%= locals.classData?.name ?? "No info" %> </div>
-            <div>Armor:<%= locals.classData?.armorTypes ?? "No Info" %> </div>
-            
-            <% classData.races?.forEach(element => { %>
-                <a href="<%= root %>races/<%= element.name.toLowerCase() %>"> <%= element.name %></a>
-           <% }); %>
+        <% if(locals.specificObject) { %>
+        
+            <% if(classData.idType === 'class') {  %>
 
-            <!-- <div><%= locals.classData?.races ?? "No Info" %> </div> -->
-            <div>Weapons Knownledge:<%= locals.classData?.weaponSpec ?? "No Info" %> </div>
-            <div>Type of fighter:<%= locals.classData?.classType ?? "No Info" %> </div>
+                <div><%= locals.classData?.description ?? "No Description" %> </div>
+                <div>Class Name:<%= locals.classData?.name ?? "No info" %> </div>
+                <div>Armor:<%= locals.classData?.armorTypes ?? "No Info" %> </div>
+                
+                <% classData.races?.forEach(element => { %>
+                    <a href="<%= root %>races/<%= element.name.toLowerCase() %>"> <%= element.name %></a>
+               <% }); %>
+      
+                <!-- <div><%= locals.classData?.races ?? "No Info" %> </div> -->
+                <div>Weapons Knownledge:<%= locals.classData?.weaponSpec ?? "No Info" %> </div>
+                <div>Type of fighter:<%= locals.classData?.classType ?? "No Info" %> </div>
 
-            <% } %>
-        <% if(!locals.indexID)  %>
-        <!-- <%= typeof(locals.indexID) ==='number' ? classData[indexID].description : locals.description ? description : "No Descrption Set" %> -->
+            <% } else if(locals.classData.idType === 'race') { console.log('inne')%>
+                <div><%= locals.classData?.name ?? "No Description" %> </div>
+                <div><%= locals.classData?.dex ?? "No info" %> </div>
+                
+                <% classData.acceptedClasses?.forEach(element => { %>
+                    <a href="<%= root %>classes/<%= element.classType.toLowerCase() %>/<%= element.name.toLowerCase() %>"> <%= element.name %></a>
+               <% }); %>
+      
+                <!-- <div><%= locals.classData?.races ?? "No Info" %> </div> -->
+                <div>Weapons Knownledge:<%= locals.classData?.weaponSpec ?? "No Info" %> </div>
+                <div>Type of fighter:<%= locals.classData?.classType ?? "No Info" %> </div>
+                <% } %>
+             <% } %>
+      
     <% } %>
 </div>

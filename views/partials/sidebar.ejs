@@ -22,7 +22,7 @@
         <% } else { %>
             
             <!--Specific Class-->
-            <% if(!locals.specificClass) {%>
+            <% if(!locals.specificObject) {%>
                 <% locals.classData?.forEach((classInfo, index) => { %>
                     <a href="../classes/<%=(classInfo.classType.toLowerCase() + '/') %><%= classInfo.name.replaceAll(" ", "").toLowerCase() %>" class="sidebar__link <% if(locals.url) { %> 
                         <%= url.url ===  '/'+classInfo.name.toLowerCase().replaceAll(" ", "") ? 'active' : "" %>
