@@ -9,7 +9,7 @@ html {
     height: 100vh;
 }
 
-.body {
+body {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -39,7 +39,7 @@ html {
 
 .main-container {
     display: flex;
-    height: 100%;
+    flex:1;
 }
 
 .information-container {
@@ -47,27 +47,87 @@ html {
     background-color: var(--background-light);
     font-size: 1.5rem;
     color: var(--font-color);
-    padding: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+  
+}
 
-    .preview__information {
+.preview__information {
+    align-self: center;
+    max-width: 70rem;
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+    .preview__img {
+        max-width: 200px;
+        height: auto;
         align-self: center;
-        max-width: 50rem;
-        display: flex;
-        flex-direction: column;
-
-        .preview__img {
-            max-width: 200px;
-            height: auto;
-            align-self: center;
-            margin-bottom: 2rem;
-            border: 1px solid var(--outline-standard);
-        }
+        margin-bottom: 2rem;
+        border: 1px solid var(--outline-standard);
     }
 }
 
+.specific__information {
+    align-self: center;
+    max-width: 70rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.specific__name-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.specific__img {
+    width: 200px;
+    height: auto;
+    align-self: center;
+    margin: 2rem 0;
+    border: 1px solid var(--outline-standard);
+}
+
+.specific__description {
+    padding-bottom: 1rem;
+    max-width: 70rem;
+    font-size: 1.8rem;
+}
+
+.specific__links-container {
+    padding-bottom: 1rem;
+}
+
+.specific__name {
+    font-size: 3rem;
+    font-weight: normal;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.specific__btn {
+    text-decoration: none;
+    color: var(--font-color);
+    border: 1px solid var(--outline-standard);
+    padding: 0 2rem;
+}
+
+.specific__grid {
+    width: 50rem;
+    display: grid;
+    grid-template: auto auto auto / auto auto auto;
+    border: 1px solid #fff;
+    margin-bottom: 2rem;
+
+    background-color: var(--background-standard);
+    text-align: center;
+
+    .specific__grid-item {
+        border: 1px solid #fff;
+    }
+}
 
 .preview__link {
     text-decoration: none;

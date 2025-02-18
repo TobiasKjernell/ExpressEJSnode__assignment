@@ -70,7 +70,7 @@ Data to be stored and imported from an appropriate directory
 Data passed to templates correctly
 Variables tested before they are used
 
-
+ <img src="<%= root %>/images/<%= classData.name %>.png" alt="photo of <%= classData.name %>" class="specific__img">
 Conditional Logic
 
 if statements / loops etc

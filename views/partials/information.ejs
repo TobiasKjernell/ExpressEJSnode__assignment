@@ -25,13 +25,14 @@
     <% } else { %>
 
         <% if(locals.specificObject) { %>
-        <div class="preview__information">
+        <div class="specific_information">
             <% if(classData.idType === 'classes') {  %>
-
-                <div><%= locals.classData?.description ?? "No Description" %> </div>
+                
+                <div class="specific__description"><%= locals.classData?.description ?? "No Description" %> </div>
                 <div>Class Name:<%= locals.classData?.name ?? "No info" %> </div>
                 <div>Armor:<%= locals.classData?.armorTypes ?? "No Info" %> </div>
-                
+               
+                <div class="specific__sub-title"> Available Classes</div>
                 <% classData.races?.forEach(race => { %>
                     <a href="<%= root ? root : './' %><%=race.idType%>/<%= race.name.toLowerCase() %>"> <%= race.name %></a>
                 <% }); %>
@@ -41,16 +42,39 @@
                 <div>Type of fighter:<%= locals.classData?.classType ?? "No Info" %> </div>
 
             <% } else if(locals.classData.idType === 'races') { %>
-                <div><%= locals.classData?.name ?? "No Description" %> </div>
-                <div><%= locals.classData?.dex ?? "No info" %> </div>
+
+                <div class="specific__name-container">
+                    <h2 class="specific__name"><%= locals.classData?.name ?? "No Name" %> </h2>
+                    <img src="<%= root %>/images/<%= classData.name %>.png" alt="photo of <%= classData.name %>" class="specific__img">
+                   
+                </div>
+
+                <div class="specific__description"><%= locals.classData?.description ?? "No Info" %> </div>
+                <div class="specific__grid-title">Start stats</div>
+
+                <div class="specific__grid">
+                    <% if(locals.classData?.str) { %> <div class="specific__grid-item"><%= classData?.str + " Strength" %> </div> <% } %>
+                    <% if(locals.classData?.con) { %> <div class="specific__grid-item"><%= classData?.con + " Consitution" %> </div> <% } %>
+                    <% if(locals.classData?.dex) { %> <div class="specific__grid-item"><%= classData?.dex + " Dexterity" %> </div> <% } %>
+                    <% if(locals.classData?.qui) { %> <div class="specific__grid-item"><%= classData?.qui + " Quickness" %> </div> <% } %>
+                    <% if(locals.classData?.piety) { %> <div class="specific__grid-item"><%= classData?.piety + "Piety" %> </div> <% } %>
+                </div>
+
+                <div class="specific__grid-title">Start Resists</div>
+                <div class="specific__grid">
+                    <% if(locals.classData?.startResist1) { %> <div class="specific__grid-item"> <%= classData.startResist1 %> </div> <% } %>
+                    <% if(locals.classData?.startResist2) { %> <div class="specific__grid-item"> <%= classData.startResist2 %> </div> <% } %>
+                    <% if(locals.classData?.startResist3) { %> <div class="specific__grid-item"> <%= classData.startResist3 %> </div> <% } %>
+                    <% if(locals.classData?.startResist4) { %> <div class="specific__grid-item"> <%= classData.startResist4 %> </div> <% } %>
+                </div>
                 
-                <% classData.acceptedClasses?.forEach(classes => { %>
-                    <a href="<%= root %><%= classes.idType %>/<%= classes.classType.toLowerCase() %>/<%= classes.name.toLowerCase() %>"> <%= classes.name %></a>
-                <% }); %>
-      
-                <!-- <div><%= locals.classData?.races ?? "No Info" %> </div> -->
-                <div>Weapons Knownledge:<%= locals.classData?.weaponSpec ?? "No Info" %> </div>
-                <div>Type of fighter:<%= locals.classData?.classType ?? "No Info" %> </div>
+                <div class="specific__sub-title"> Available Races</div>
+                <div class="specific__links-container">
+                    <% classData.acceptedClasses?.forEach(classes => { %>
+                        <a href="<%= root %><%= classes.idType %>/<%= classes.classType.toLowerCase() %>/<%= classes.name.toLowerCase() %>" class="specific__btn"> <%= classes.name %></a>
+                    <% }); %>
+                </div>
+
                 <% } %>
             <% } %>
             </div>
