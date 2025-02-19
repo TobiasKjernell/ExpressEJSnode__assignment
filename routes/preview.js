@@ -10,7 +10,7 @@ previewRouter.get('/', (req, res) => {
 
 allClasses.forEach((previewClass, index) => {
     previewRouter.get(`/${previewClass.name.replaceAll(" ", "").toLowerCase()}`, (req, res) => {
-        res.render('pages/home',{
+        res.render('pages/base',{
             root: helpers.rootSearch(req.url),
             headTitle: previewClass.name,
             headerTitle: previewClass.name,

@@ -10,7 +10,7 @@
         <% } else if(locals.overviewData) { %> 
                 <% if(overviewData[0]?.acceptedClasses) { %>
                     
-                    <div> This realm have <%= overviewData.length %> races.   <% let mapped = overviewData.map(el => el.name); %> They are: <%= mapped %></div>
+                    <div> This realm have <%= overviewData.length %> races.   <% let mapped = overviewData.map(el => el.name); %> They are: <%= mapped.join(', ') %></div>
 
                 <% } else {%>                     
                     <div>This realm consists of <%= overviewData.length %> types: <%= overviewData.join(" & ") %>  </div>
@@ -25,33 +25,32 @@
     <% } else { %>
 
         <% if(locals.specificObject) { %>
+
         <div class="specific_information">
-            <% if(classData.idType === 'classes') {  %>
+            <div class="specific__name-container">
+                <h2 class="specific__name"><%= locals.classData?.name ?? "No Name" %> </h2>
+                <img src="<%= root %>/images/<%= classData.name %>.png" alt="photo of <%= classData.name %>" class="specific__img">
+            </div>
+
+            <div class="specific__description"><%= locals.classData?.description ?? "No Description" %> </div>
+
+            <% if(classData?.idType === 'classes') {  %>
                 
-                <div class="specific__description"><%= locals.classData?.description ?? "No Description" %> </div>
-                <div>Class Name:<%= locals.classData?.name ?? "No info" %> </div>
-                <div>Armor:<%= locals.classData?.armorTypes ?? "No Info" %> </div>
+                <div class="speficic_sub-title --underline">Armor</div> 
+                <div><%= locals.classData?.armorTypes.join(", ") ?? "No Info" %></div>
                
-                <div class="specific__sub-title"> Available Classes</div>
+                <div class="specific__sub-title --space-top"> Available Classes</div>
                 <% classData.races?.forEach(race => { %>
-                    <a href="<%= root ? root : './' %><%=race.idType%>/<%= race.name.toLowerCase() %>"> <%= race.name %></a>
+                    <a href="<%= root ? root : './' %><%=race.idType%>/<%= race.name.toLowerCase() %>" class="specific__btn"> <%= race.name %></a>
                 <% }); %>
       
-                <!-- <div><%= locals.classData?.races ?? "No Info" %> </div> -->
-                <div>Weapons Knownledge:<%= locals.classData?.weaponSpec ?? "No Info" %> </div>
-                <div>Type of fighter:<%= locals.classData?.classType ?? "No Info" %> </div>
+                <div class="specific__sub-title --underline --space-top">Weapon Knownledge</div>
+                <div class="--space-bottom"><%= locals.classData?.weaponSpec.join(', ') ?? "No Info" %> </div>
+                
 
-            <% } else if(locals.classData.idType === 'races') { %>
+            <% } else if(locals.classData?.idType === 'races') { %>
 
-                <div class="specific__name-container">
-                    <h2 class="specific__name"><%= locals.classData?.name ?? "No Name" %> </h2>
-                    <img src="<%= root %>/images/<%= classData.name %>.png" alt="photo of <%= classData.name %>" class="specific__img">
-                   
-                </div>
-
-                <div class="specific__description"><%= locals.classData?.description ?? "No Info" %> </div>
                 <div class="specific__grid-title">Start stats</div>
-
                 <div class="specific__grid">
                     <% if(locals.classData?.str) { %> <div class="specific__grid-item"><%= classData?.str + " Strength" %> </div> <% } %>
                     <% if(locals.classData?.con) { %> <div class="specific__grid-item"><%= classData?.con + " Consitution" %> </div> <% } %>

@@ -7,7 +7,7 @@ const overallClassTypes = new Set(allClasses.map(classes => classes.classType));
 
 //Overview of combat types for classes
 classesRouter.get('/', (req, res) => {
-    res.render('pages/home', {
+    res.render('pages/base', {
         root: helpers.rootSearch(req.url),
         headTitle: "Classes Overview",
         headerTitle: "Classes Overview",
@@ -17,10 +17,10 @@ classesRouter.get('/', (req, res) => {
     })
 })
 
-//Classes on combat type
+//Classes on combat type ( based on /melee && /range)
 overallClassTypes.forEach((typeOfCombatClass, index) => {
     classesRouter.get(`/${typeOfCombatClass.toLowerCase()}`, (req, res) => {
-        res.render('pages/home', {
+        res.render('pages/base', {
             root: helpers.rootSearch(req.url),
             headTitle: typeOfCombatClass,
             headerTitle: `${typeOfCombatClass}`,
@@ -32,13 +32,13 @@ overallClassTypes.forEach((typeOfCombatClass, index) => {
     })
 });
 
-//Specific class on combat type
+//Specific class on combat type ( /races && /classes)
 allClasses.forEach((specificClass, index) => {
     classesRouter.get(`/${specificClass.classType.toLowerCase()}/${allClasses[index].name}`, (req, res) => {
-        res.render('pages/home', {
+        res.render('pages/base', {
             root: helpers.rootSearch(req.url),
             headTitle: specificClass.name,
-            headerTitle: specificClass.name,
+            headerTitle: specificClass.classType,
             preview: false,
             classData: specificClass,
             specificObject: true,

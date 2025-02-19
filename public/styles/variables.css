@@ -1,6 +1,12 @@
 :root {
-    --outline-standard: #fff;
-    --background-standard: #000c7a;
-    --background-light: #000f97;
+    --outline-standard: #b37c34;
+    --background-standard: #222; 
+    --background-light: #333;
     --font-color: #fff;
 }
+
+
+/* --outline-standard: #fff;
+--background-standard: #000c7a; 
+--background-light: #000f97;
+--font-color: #fff; */

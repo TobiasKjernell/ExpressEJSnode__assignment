@@ -6,7 +6,7 @@ const racesRouter = express.Router();
 
 //Overview of combat types for races
 racesRouter.get('/', (req, res) => {
-    res.render('pages/home', {
+    res.render('pages/base', {
         root: helpers.rootSearch(req.url),
         headTitle: "Races Overview",
         headerTitle: "Races Overview",
@@ -18,7 +18,7 @@ racesRouter.get('/', (req, res) => {
 
 allRaces.forEach((typeOfCombatClass, index) => {
     racesRouter.get(`/${typeOfCombatClass.name.toLowerCase()}`, (req, res) => {
-        res.render('pages/home', {
+        res.render('pages/base', {
             root: helpers.rootSearch(req.url),
             headTitle: typeOfCombatClass.name,
             headerTitle: `${typeOfCombatClass.name}`,

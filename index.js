@@ -11,7 +11,7 @@ const __dirname = path.resolve();
 const PORT = 3030;
 
 app.get('/', (req, res) => {
-    res.render('pages/home', {
+    res.render('pages/base', {
         headerTitle: 'Midgard',
         headTitle: 'Midgard',
         classData: allClasses,
