@@ -39,7 +39,7 @@ body {
 
 .main-container {
     display: flex;
-    flex:1;
+    flex: 1;
 }
 
 .information-container {
@@ -51,7 +51,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-  
+
 }
 
 .preview__information {
@@ -59,7 +59,8 @@ body {
     max-width: 70rem;
     display: flex;
     flex-direction: column;
-    margin: 2rem 0;
+    margin: 2rem;
+
     .preview__img {
         max-width: 200px;
         height: auto;
@@ -196,9 +197,22 @@ body {
 .--space {
     margin: 1rem 0;
 }
+
 .--space-top {
     margin-top: 1rem;
 }
+
 .--space-bottom {
     margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+    .specific__grid {
+        display: flex;
+        width: fit-content;
+    }
+
+    .specific__grid-item {
+        padding: 0 1rem;
+    }
 }
