@@ -5,10 +5,13 @@ import { midgard } from './data/realm.js';
 import previewRouter from './routes/preview.js';
 import classesRouter from './routes/classes.js';
 import racesRouter from './routes/races.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const app = express();
 const __dirname = path.resolve();
-const PORT = 3030;
+const PORT = process.env.PORT;
 
 app.get('/', (req, res) => {
     res.render('pages/base', {
