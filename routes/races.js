@@ -16,6 +16,7 @@ racesRouter.get('/', (req, res) => {
     })
 })
 
+//Each race
 allRaces.forEach((typeOfCombatClass, index) => {
     racesRouter.get(`/${typeOfCombatClass.name.toLowerCase()}`, (req, res) => {
         res.render('pages/base', {
