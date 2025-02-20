@@ -1,3 +1,5 @@
+//two different classes and merging them together just to shoot myself in the foot to practice, into partials checks.
+
 class CharacterClass {
     constructor(classType, name, armorTypes, races, weaponSpec, description = 'No information') {
         this.classType = classType;

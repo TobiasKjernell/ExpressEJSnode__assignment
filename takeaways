@@ -1,7 +1,12 @@
-Partials is good for re-usables
+Partials is good for re-usable elements.
 
 EJS syntaxes can be very messy
 
 Routing is straight forward, same with EJS workflow.
 
 After working with EJS and Express, React was straight forward when we started with it. (first week). 
+
+Some solutions for bigger data-objects brings more 'spaghetti code' over time.
+
+node modules feels unsafe when it's not quality checked. Russian roulette feeling.
+
