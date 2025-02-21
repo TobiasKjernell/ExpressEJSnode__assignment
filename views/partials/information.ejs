@@ -29,7 +29,7 @@
         <div class="specific_information">
             <div class="specific__name-container">
                 <h2 class="specific__name"><%= locals.classData?.name ?? "No Name" %> </h2>
-                <img src="<%= root %>/images/<%= classData.name %>.png" alt="photo of <%= classData.name %>" class="specific__img">
+                <img src="<%= root ? root : ".." %>/images/<%= classData.name %>.png" alt="photo of <%= classData.name %>" class="specific__img">
             </div>
             
             <div class="specific__description"><%= locals.classData?.description ?? "No Description" %> </div>
