@@ -3,7 +3,7 @@
         <div class="preview__information">
         <% if(!isNaN(locals.indexID)) { %>
             
-                <img src="../images/<%= classData[indexID].name %>.png" alt="photo of class" class="preview__img">
+                <img src="/images/<%= classData[indexID].name %>.png" alt="photo of class" class="preview__img">
                 <span><%= classData[indexID].description %></span> 
                 <a href="../<%= classData[indexID].idType %>/<%= (classData[indexID].classType +"/"+ classData[indexID].name).replaceAll(" ", "").toLowerCase() %>" class="preview__link">Go to <%= classData[indexID].name %>'s Page</a>    
            
@@ -28,8 +28,8 @@
 
         <div class="specific_information">
             <div class="specific__name-container">
-                <h2 class="specific__name"><%= locals.classData?.name ?? "No Name" %> </h2>
-                <img src="images/<%= classData.name %>.png" alt="photo of <%= classData.name %>" class="specific__img">
+                <h2 class="specific__name"><%=y locals.classData?.name ?? "No Name" %> </h2>
+                <img src="/images/<%= classData.name %>.png" alt="photo of <%= classData.name %>" class="specific__img">
             </div>
             
             <div class="specific__description"><%= locals.classData?.description ?? "No Description" %> </div>
