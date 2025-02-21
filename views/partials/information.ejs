@@ -41,7 +41,7 @@
                     <div class="speficic_sub-title --underline">Armor</div> 
                     <div><%= locals.classData?.armorTypes.join(", ") ?? "No Info" %></div>
                    
-                    <div class="specific__sub-title --space-top"> Available Classes</div>
+                    <div class="specific__sub-title --space-top"> Available Races</div>
                     <% classData.races?.forEach(race => { %>
                         <a href="<%= root ? root : './' %><%=race.idType%>/<%= race.name.toLowerCase() %>" class="specific__btn"> <%= race.name %></a>
                     <% }); %>
@@ -72,7 +72,7 @@
                         <% if(locals.classData?.startResist4) { %> <div class="specific__grid-item"> <%= classData.startResist4 %> </div> <% } %>
                     </div>
                     
-                    <div class="specific__sub-title"> Available Races</div>
+                    <div class="specific__sub-title"> Available Classes</div>
                     <div class="specific__links-container">
                         <% classData.acceptedClasses?.forEach(classes => { %>
                             <a href="<%= root %><%= classes.idType %>/<%= classes.classType.toLowerCase() %>/<%= classes.name.toLowerCase() %>" class="specific__btn"> <%= classes.name %></a>
